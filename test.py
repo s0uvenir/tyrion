@@ -48,5 +48,41 @@ def test1():
 		print "Failed: subtractVectorFromPoint"
 		no += 1
 
+	vector = Vector(3, 4, 5)
+	vector.rotateVectorXY(90)
+	
+	if vector.loc == (-4.0, 3.0000000000000004, 5):
+		yes += 1
+	else:
+		print "Failed: rotateVectorXY"
+		no += 1
+
+	vector = Vector(3, 4, 5)
+	vector.rotateVectorXZ(90)
+	
+	if vector.loc == (5.0, 4, -2.9999999999999996):
+		yes += 1
+	else:
+		print "Failed: rotateVectorXZ"
+		no += 1
+
+	vector = Vector(3, 4, 5)
+	vector.rotateVectorYZ(90)
+	
+	if vector.loc == (3, -5.0, 4.0):
+		yes += 1
+	else:
+		print "Failed: rotateVectorYZ"
+		no += 1
+
+	vector = Vector(3, 4, 5)
+	vector.scaleVector(2,1,1)
+	
+	if vector.loc == (6 , 4, 5):
+		yes += 1
+	else:
+		print "Failed: scaleVector"
+		no += 1
+
 	return yes, no
 
