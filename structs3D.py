@@ -6,7 +6,8 @@ class Point():
 		self.x	 = 	x
 		self.y	 =	y
 		self.z	 =	z
-		self.loc = 	(x, y, z)	
+		self.loc = 	(x, y, z)
+		self.color = 	(255, 255, 255)	
 	
 	def addVectorToPoint(self, vector):
 		point = Point(self.x + vector.x, self.y + vector.y, self.z + vector.z)
@@ -23,9 +24,20 @@ class Point():
 	def updateLoc(self):
 		self.loc = (self.x, self.y, self.z)
 
-	def drawPoint(self):
-		glColor3f(0,255,255)
-		pyglet.graphics.draw(1, pyglet.gl.GL_POINTS, ('v3f', self.loc))
+	def setColor(self, r, g, b):
+		self.color = (r, g, b)
+
+	def move(self, x, y, z):
+		self.x	 = 	x
+		self.y	 =	y
+		self.z	 =	z
+		self.updateLoc()
+
+	def draw(self):
+		vertexList = pyglet.graphics.vertex_list(1, 
+			('v3i', self.loc),
+			('c3B', self.color))
+		vertexList.draw(pyglet.gl.GL_POINTS)
 
 class Color():
 	def __init__ (self, r, g, b):
