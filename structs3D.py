@@ -40,12 +40,6 @@ class Point():
 		self.z	 =	z
 		self.updateLoc()
 
-	def vertList(self):
-		vertexList = pyglet.graphics.vertex_list(1, 
-			('v3i', self.loc),
-			('c3B', self.color))
-		return vertexList
-
 	def draw(self):
 		vertexList = pyglet.graphics.vertex_list(1, 
 			('v3i', self.loc),

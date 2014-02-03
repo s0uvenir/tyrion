@@ -11,32 +11,56 @@ height = 600
 depth = 1
 
 window = pyglet.window.Window(width = width, height = height)
+pyglet.gl.glTranslatef(width/2, height/2, 0) #sets origin to 0,0,0
 batch = pyglet.graphics.Batch()
-	
+
 def generatePointCloud(numPoints):
 	pointCloud = []
 	for i in range(numPoints):
-		x = random.randrange(window.width)
-		y = random.randrange(window.height)
+		x = random.randrange(-window.width/2, window.width/2)
+		y = random.randrange(-window.height/2, window.height/2)
 		z = random.randrange(depth)
 		point = Point(x,y,z)
 		#point.color = (0,0,0)
 		pointCloud.append(point)
 	return pointCloud
 
+
+def redrawScreen(window, objects):
+	for obj in objects:
+		obj.draw()
+	
+
 points = generatePointCloud(100)
+#redrawScreen(window, points)
 
 @window.event
 def on_key_press(symbol, modifiers):
 	if symbol == key.D:
 		window.clear()
+		redrawScreen(window, points)
 		pass
 	elif symbol == key.A:
-		origin = Point(0,0,0)
-		for item in points:
-			#vector = item.subtractPointFromPoint(origin)
-			#item.setPointToPoint(origin)
-			item.addVectorToPoint(vector.scaleVector(0.5,0.5,0.5))
+		for i in range(len(points)):
+			print len(points)
+			print item.loc
+			newPoints = []
+			origin = Point(0,0,0)
+			vector = origin.subtractPointFromPoint(points[i])
+			points[i] = origin.addVectorToPoint(vector)
+			newPoints.append(temp)
+			print len(newPoints)
+			print "new item " + str(points[i].loc)
+		redrawScreen(window, points)
+		
+		#for item in points:
+		#	selected = item
+		#	vector = item.subtractPointFromPoint(origin)
+		#	selected.setPointToPoint(origin)
+		#	item = selected.addVectorToPoint(vector.scaleVector(1,1,1))
+		#	item.draw()
+		#redrawScreen(window, points)
+
 	elif symbol == key.S:
 		pass
 	elif symbol == key.R:
@@ -44,13 +68,10 @@ def on_key_press(symbol, modifiers):
 	else:
 		pass
 
-@window.event
-def on_draw():
-    	window.clear()
-	for item in points:
-		item.draw()
-
-
+#@window.event
+#def on_draw():
+#  	window.clear()
+	
 
 
 pyglet.app.run()
