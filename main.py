@@ -49,14 +49,6 @@ def on_key_press(symbol, modifiers):
 			points[i] = origin.addVectorToPoint(vector.scaleVector(0.5,0.5,0.5))
 
 		redrawScreen(window, points)
-		
-		#for item in points:
-		#	selected = item
-		#	vector = item.subtractPointFromPoint(origin)
-		#	selected.setPointToPoint(origin)
-		#	item = selected.addVectorToPoint(vector.scaleVector(1,1,1))
-		#	item.draw()
-		#redrawScreen(window, points)
 
 	elif symbol == key.S:
 		window.clear()
@@ -64,7 +56,7 @@ def on_key_press(symbol, modifiers):
 		for i in range(len(points)):
 			vector = points[i].subtractPointFromPoint(origin)
 			points[i].setPointToPoint(origin)
-			points[i] = origin.addVectorToPoint(vector.scaleVector(2.0,2.0,2.0))
+			points[i] = origin.addVectorToPoint(vector.scaleVector(2,2,2))
 
 		redrawScreen(window, points)
 		pass
