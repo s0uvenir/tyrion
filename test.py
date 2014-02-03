@@ -51,7 +51,7 @@ def test1():
 	vector = Vector(3, 4, 5)
 	vector.rotateVectorXY(90)
 	
-	if vector.loc == (-4.0, 3.0000000000000004, 5):
+	if vector.loc == (-4, 3, 5):
 		yes += 1
 	else:
 		print "Failed: rotateVectorXY"
@@ -60,7 +60,7 @@ def test1():
 	vector = Vector(3, 4, 5)
 	vector.rotateVectorXZ(90)
 	
-	if vector.loc == (5.0, 4, -2.9999999999999996):
+	if vector.loc == (5, 4, -3):
 		yes += 1
 	else:
 		print "Failed: rotateVectorXZ"
@@ -69,7 +69,7 @@ def test1():
 	vector = Vector(3, 4, 5)
 	vector.rotateVectorYZ(90)
 	
-	if vector.loc == (3, -5.0, 4.0):
+	if vector.loc == (3, -5, 4):
 		yes += 1
 	else:
 		print "Failed: rotateVectorYZ"

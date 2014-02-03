@@ -76,9 +76,9 @@ class Vector():
 		b1 = (math.sin(degree)*a0) + (math.cos(degree)*a1) + 0*a2
 		b2 = 0*a0 + 0*a1 + 1*a2
 
-		vector.x = b0
-		vector.y = b1
-		vector.z = b2
+		vector.x = int(round(b0,1))
+		vector.y = int(round(b1,1))
+		vector.z = int(round(b2,1))
 		vector.updateLoc()
 
 		return vector
@@ -92,9 +92,9 @@ class Vector():
 		b1 = 0*a0 + 1*a1 + 0*a2
 		b2 = (-math.sin(degree)*a0) + 0*a1 + (math.cos(degree)*a2)
 
-		vector.x = b0
-		vector.y = b1
-		vector.z = b2
+		vector.x = int(round(b0,1))
+		vector.y = int(round(b1,1))
+		vector.z = int(round(b2,1))
 		vector.updateLoc()
 
 		return vector
@@ -108,18 +108,19 @@ class Vector():
 		b1 = 0*a0 + (math.cos(degree)*a1) + (-math.sin(degree)*a2)
 		b2 = 0*a0 + (math.sin(degree)*a1) + (math.cos(degree)*a2)
 
-		vector.x = b0
-		vector.y = b1
-		vector.z = b2
+		vector.x = int(round(b0,1))
+		vector.y = int(round(b1,1))
+		vector.z = int(round(b2,1))
 		vector.updateLoc()
 
 		return vector
 	
 	def scaleVector(self, s0, s1, s2):
 		vector = self
-		vector.x *= s0
-		vector.y *= s1
-		vector.z *= s2
+		vector.x = int(vector.x*s0)
+		vector.y = int(vector.y*s1)
+		vector.z = int(vector.z*s2)
+		
 		vector.updateLoc()
 		return vector
 

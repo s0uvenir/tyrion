@@ -41,16 +41,13 @@ def on_key_press(symbol, modifiers):
 		redrawScreen(window, points)
 		pass
 	elif symbol == key.A:
+		window.clear()
+		origin = Point(0,0,0)
 		for i in range(len(points)):
-			print len(points)
-			print item.loc
-			newPoints = []
-			origin = Point(0,0,0)
-			vector = origin.subtractPointFromPoint(points[i])
-			points[i] = origin.addVectorToPoint(vector)
-			newPoints.append(temp)
-			print len(newPoints)
-			print "new item " + str(points[i].loc)
+			vector = points[i].subtractPointFromPoint(origin)
+			points[i].setPointToPoint(origin)
+			points[i] = origin.addVectorToPoint(vector.scaleVector(0.5,0.5,0.5))
+
 		redrawScreen(window, points)
 		
 		#for item in points:
@@ -62,8 +59,24 @@ def on_key_press(symbol, modifiers):
 		#redrawScreen(window, points)
 
 	elif symbol == key.S:
+		window.clear()
+		origin = Point(0,0,0)
+		for i in range(len(points)):
+			vector = points[i].subtractPointFromPoint(origin)
+			points[i].setPointToPoint(origin)
+			points[i] = origin.addVectorToPoint(vector.scaleVector(2.0,2.0,2.0))
+
+		redrawScreen(window, points)
 		pass
 	elif symbol == key.R:
+		window.clear()
+		origin = Point(0,0,0)
+		for i in range(len(points)):
+			vector = points[i].subtractPointFromPoint(origin)
+			points[i].setPointToPoint(origin)
+			points[i] = origin.addVectorToPoint(vector.rotateVectorXY(15))
+
+		redrawScreen(window, points)
 		pass
 	else:
 		pass
